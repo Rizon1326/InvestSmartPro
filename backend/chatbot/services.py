@@ -20,7 +20,7 @@ class GeminiChatService:
     """Service for interacting with Gemini AI"""
     
     def __init__(self):
-        self.model_name = 'gemini-2.0-flash'
+        self.model_name = 'gemini-2.5-flash'
         self.system_prompt = """
 You are InvestSmart Assistant, a friendly and supportive AI chatbot designed to help aspiring entrepreneurs in Bangladesh.
 
