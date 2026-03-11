@@ -1,18 +1,17 @@
 # chatbot/services.py
 
-import google.generativeai as genai
+from google import genai
 from django.conf import settings
-import uuid
 
-# Configure Gemini
-genai.configure(api_key=settings.GEMINI_API_KEY)
+# Configure Gemini Client with the new google-genai package
+client = genai.Client(api_key=settings.GEMINI_API_KEY)
 
 
 class GeminiChatService:
     """Service for interacting with Gemini AI"""
     
     def __init__(self):
-        self.model = genai.GenerativeModel('gemini-2.5-flash')
+        self.model_name = 'gemini-2.0-flash'
         self.system_prompt = """
 You are InvestSmart Assistant, a friendly and supportive AI chatbot designed to help aspiring entrepreneurs in Bangladesh.
 
@@ -48,7 +47,10 @@ Remember: You're here to help users succeed in their entrepreneurial journey!
             
             context += f"User: {user_message}\nAssistant:"
             
-            response = self.model.generate_content(context)
+            response = client.models.generate_content(
+                model=self.model_name,
+                contents=context
+            )
             return response.text
             
         except Exception as e:
@@ -81,7 +83,10 @@ RISK_LEVEL: [low/medium/high]
 FEEDBACK: [your detailed feedback]
 """
             
-            response = self.model.generate_content(prompt)
+            response = client.models.generate_content(
+                model=self.model_name,
+                contents=prompt
+            )
             text = response.text
             
             # Parse response
@@ -148,7 +153,10 @@ DESCRIPTION: [brief description]
 ---
 """
             
-            response = self.model.generate_content(prompt)
+            response = client.models.generate_content(
+                model=self.model_name,
+                contents=prompt
+            )
             text = response.text
             
             # Parse scenarios (simplified parsing)
