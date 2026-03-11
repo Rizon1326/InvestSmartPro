@@ -1,0 +1,492 @@
+{
+    "info": {
+        "name": "InvestSmart API",
+        "description": "Complete API collection for InvestSmart backend - Business Education & Simulation Platform",
+        "_postman_id": "investsmart-api-collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000/api",
+            "type": "string"
+        },
+        {
+            "key": "session_id",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "business_id",
+            "value": "",
+            "type": "string"
+        }
+    ],
+    "item": [
+        {
+            "name": "1. Core",
+            "description": "Health check and categories endpoints",
+            "item": [
+                {
+                    "name": "Health Check",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/health/",
+                            "host": ["{{base_url}}"],
+                            "path": ["health", ""]
+                        },
+                        "description": "Check if the API server is running"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get All Categories",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/categories/",
+                            "host": ["{{base_url}}"],
+                            "path": ["categories", ""]
+                        },
+                        "description": "Get all business categories"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Single Category",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/categories/1/",
+                            "host": ["{{base_url}}"],
+                            "path": ["categories", "1", ""]
+                        },
+                        "description": "Get a single category by ID"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "2. Learning",
+            "description": "Lessons and progress endpoints",
+            "item": [
+                {
+                    "name": "Get All Lessons",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/lessons/",
+                            "host": ["{{base_url}}"],
+                            "path": ["lessons", ""]
+                        },
+                        "description": "Get all published lessons"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Single Lesson",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/lessons/introduction-to-entrepreneurship/",
+                            "host": ["{{base_url}}"],
+                            "path": ["lessons", "introduction-to-entrepreneurship", ""]
+                        },
+                        "description": "Get a single lesson by slug"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Mark Lesson Complete",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/lessons/introduction-to-entrepreneurship/complete/",
+                            "host": ["{{base_url}}"],
+                            "path": ["lessons", "introduction-to-entrepreneurship", "complete", ""]
+                        },
+                        "description": "Mark a lesson as completed (requires authentication)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User Progress",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/progress/",
+                            "host": ["{{base_url}}"],
+                            "path": ["progress", ""]
+                        },
+                        "description": "Get lesson progress for authenticated user"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "3. Chatbot",
+            "description": "AI-powered chatbot endpoints",
+            "item": [
+                {
+                    "name": "Start New Conversation",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = pm.response.json();",
+                                    "pm.collectionVariables.set('session_id', jsonData.session_id);",
+                                    "console.log('Session ID saved:', jsonData.session_id);"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/chat/new/",
+                            "host": ["{{base_url}}"],
+                            "path": ["chat", "new", ""]
+                        },
+                        "description": "Start a new chat conversation. The session_id will be automatically saved."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Send Chat Message",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"message\": \"How do I start a small business in Bangladesh?\",\n    \"session_id\": \"{{session_id}}\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/chat/",
+                            "host": ["{{base_url}}"],
+                            "path": ["chat", ""]
+                        },
+                        "description": "Send a message to the AI chatbot"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Conversation History",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/chat/history/{{session_id}}/",
+                            "host": ["{{base_url}}"],
+                            "path": ["chat", "history", "{{session_id}}", ""]
+                        },
+                        "description": "Get the history of a conversation"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "4. Business Ideas",
+            "description": "Business idea CRUD and simulation endpoints",
+            "item": [
+                {
+                    "name": "Get All Business Ideas",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/business-ideas/",
+                            "host": ["{{base_url}}"],
+                            "path": ["business-ideas", ""]
+                        },
+                        "description": "Get all business ideas"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Business Idea",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = pm.response.json();",
+                                    "pm.collectionVariables.set('business_id', jsonData.id);",
+                                    "console.log('Business ID saved:', jsonData.id);"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Dhaka Coffee House\",\n    \"description\": \"A modern coffee shop in Gulshan area targeting young professionals and students. Will serve premium coffee, pastries, and light snacks with free WiFi.\",\n    \"initial_investment\": 500000,\n    \"monthly_revenue\": 150000,\n    \"monthly_expenses\": 80000,\n    \"category_id\": 2\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/business-ideas/",
+                            "host": ["{{base_url}}"],
+                            "path": ["business-ideas", ""]
+                        },
+                        "description": "Create a new business idea with AI analysis. Required fields: name, description, initial_investment, monthly_revenue, monthly_expenses. Optional: category_id (1-10)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Business Idea (Minimal)",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "exec": [
+                                    "var jsonData = pm.response.json();",
+                                    "pm.collectionVariables.set('business_id', jsonData.id);",
+                                    "console.log('Business ID saved:', jsonData.id);"
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Tea Stall\",\n    \"description\": \"Small tea stall near office area\",\n    \"initial_investment\": 50000,\n    \"monthly_revenue\": 30000,\n    \"monthly_expenses\": 15000\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/business-ideas/",
+                            "host": ["{{base_url}}"],
+                            "path": ["business-ideas", ""]
+                        },
+                        "description": "Create a business idea with minimum required fields only"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Single Business Idea",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/business-ideas/{{business_id}}/",
+                            "host": ["{{base_url}}"],
+                            "path": ["business-ideas", "{{business_id}}", ""]
+                        },
+                        "description": "Get a single business idea by ID"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Business Idea (PUT)",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Dhaka Coffee House Premium\",\n    \"description\": \"An upgraded premium coffee shop with expanded menu\",\n    \"initial_investment\": 600000,\n    \"monthly_revenue\": 200000,\n    \"monthly_expenses\": 100000,\n    \"category_id\": 2\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/business-ideas/{{business_id}}/",
+                            "host": ["{{base_url}}"],
+                            "path": ["business-ideas", "{{business_id}}", ""]
+                        },
+                        "description": "Full update of a business idea - all fields required"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Business Idea (PATCH)",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"monthly_revenue\": 180000\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/business-ideas/{{business_id}}/",
+                            "host": ["{{base_url}}"],
+                            "path": ["business-ideas", "{{business_id}}", ""]
+                        },
+                        "description": "Partial update - only send fields you want to change"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Business Idea",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/business-ideas/{{business_id}}/",
+                            "host": ["{{base_url}}"],
+                            "path": ["business-ideas", "{{business_id}}", ""]
+                        },
+                        "description": "Delete a business idea. Returns 204 No Content on success."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Run Simulation",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"scenario_name\": \"Best Case Scenario\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/business-ideas/{{business_id}}/simulate/",
+                            "host": ["{{base_url}}"],
+                            "path": ["business-ideas", "{{business_id}}", "simulate", ""]
+                        },
+                        "description": "Run a financial simulation on a business idea. Optional: scenario_name"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get AI Scenarios",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/business-ideas/{{business_id}}/scenarios/",
+                            "host": ["{{base_url}}"],
+                            "path": ["business-ideas", "{{business_id}}", "scenarios", ""]
+                        },
+                        "description": "Get AI-generated business scenarios (optimistic, realistic, pessimistic)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Simulation History",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/business-ideas/{{business_id}}/history/",
+                            "host": ["{{base_url}}"],
+                            "path": ["business-ideas", "{{business_id}}", "history", ""]
+                        },
+                        "description": "Get all simulations for a specific business idea"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "5. Simulations",
+            "description": "Simulation history endpoints",
+            "item": [
+                {
+                    "name": "Get All Simulations",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/simulations/",
+                            "host": ["{{base_url}}"],
+                            "path": ["simulations", ""]
+                        },
+                        "description": "Get all simulation records"
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
