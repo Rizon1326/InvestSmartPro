@@ -22,7 +22,7 @@ import { ErrorState } from '../components/ui/ErrorState';
 import { formatBDT, formatDate } from '../lib/utils';
 import toast from 'react-hot-toast';
 
-const CHART_COLORS = ['#3b82f6', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6'];
+const CHART_COLORS = ['#6366f1', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6'];
 
 export function IdeaDetail() {
   const { id } = useParams();
@@ -87,24 +87,27 @@ export function IdeaDetail() {
   return (
     <div className="animate-fade-in space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+        <div className="flex items-start gap-3">
           <button
             onClick={() => navigate('/ideas')}
-            className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-colors bg-transparent border-0 cursor-pointer"
+            className="mt-0.5 p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition-all bg-transparent border-0 cursor-pointer"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
           </button>
           <div>
-            <h2 className="text-xl font-bold text-slate-900">{idea.name}</h2>
-            <p className="text-sm text-slate-500 mt-0.5">Created {formatDate(idea.created_at)}</p>
+            <div className="flex items-center gap-2.5 mb-1">
+              <h2 className="text-xl font-black text-slate-900 tracking-tight">{idea.name}</h2>
+              <RiskBadge level={idea.risk_level} />
+            </div>
+            <p className="text-sm text-slate-400">Created {formatDate(idea.created_at)}</p>
           </div>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <button
             onClick={handleSimulate}
             disabled={simLoading}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-xl hover:bg-primary-700 disabled:opacity-50 transition-colors border-0 cursor-pointer"
+            className="btn-primary disabled:opacity-50"
           >
             {simLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4" />}
             Run Simulation
@@ -112,14 +115,14 @@ export function IdeaDetail() {
           <button
             onClick={handleGenerateScenarios}
             disabled={scenariosLoading}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-violet-700 bg-violet-50 rounded-xl hover:bg-violet-100 disabled:opacity-50 transition-colors border-0 cursor-pointer"
+            className="btn-secondary disabled:opacity-50"
           >
             {scenariosLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
             AI Scenarios
           </button>
           <button
             onClick={() => setShowDeleteConfirm(true)}
-            className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors bg-transparent border-0 cursor-pointer"
+            className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all bg-transparent border-0 cursor-pointer"
           >
             <Trash2 className="w-4 h-4" />
           </button>
@@ -128,36 +131,44 @@ export function IdeaDetail() {
 
       {/* Key Metrics */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-        <div className="bg-white rounded-2xl border border-slate-100 p-4 text-center">
+        <div className="bg-white rounded-2xl border border-slate-200 p-4 text-center">
           <ScoreGauge score={idea.feasibility_score} size="md" />
-          <p className="text-xs text-slate-500 mt-2">Feasibility</p>
+          <p className="text-xs text-slate-500 mt-2 font-medium">Feasibility</p>
         </div>
-        <div className="bg-white rounded-2xl border border-slate-100 p-4">
-          <div className="flex items-center gap-2 mb-2">
-            <DollarSign className="w-4 h-4 text-primary-500" />
+        <div className="bg-white rounded-2xl border border-slate-200 p-4">
+          <div className="flex items-center gap-1.5 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-primary-50 flex items-center justify-center">
+              <DollarSign className="w-3.5 h-3.5 text-primary-500" />
+            </div>
             <span className="text-xs text-slate-500">Investment</span>
           </div>
-          <p className="text-lg font-bold text-slate-900">{formatBDT(idea.initial_investment)}</p>
+          <p className="text-base font-black text-slate-900 tracking-tight">{formatBDT(idea.initial_investment)}</p>
         </div>
-        <div className="bg-white rounded-2xl border border-slate-100 p-4">
-          <div className="flex items-center gap-2 mb-2">
-            <TrendingUp className="w-4 h-4 text-emerald-500" />
-            <span className="text-xs text-slate-500">Monthly Profit</span>
+        <div className="bg-white rounded-2xl border border-slate-200 p-4">
+          <div className="flex items-center gap-1.5 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-emerald-50 flex items-center justify-center">
+              <TrendingUp className="w-3.5 h-3.5 text-emerald-500" />
+            </div>
+            <span className="text-xs text-slate-500">Mo. Profit</span>
           </div>
-          <p className={`text-lg font-bold ${monthlyProfit >= 0 ? 'text-emerald-600' : 'text-red-600'}`}>
+          <p className={`text-base font-black tracking-tight ${monthlyProfit >= 0 ? 'text-emerald-600' : 'text-red-500'}`}>
             {formatBDT(monthlyProfit)}
           </p>
         </div>
-        <div className="bg-white rounded-2xl border border-slate-100 p-4">
-          <div className="flex items-center gap-2 mb-2">
-            <BarChart3 className="w-4 h-4 text-violet-500" />
+        <div className="bg-white rounded-2xl border border-slate-200 p-4">
+          <div className="flex items-center gap-1.5 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-violet-50 flex items-center justify-center">
+              <BarChart3 className="w-3.5 h-3.5 text-violet-500" />
+            </div>
             <span className="text-xs text-slate-500">Annual ROI</span>
           </div>
-          <p className={`text-lg font-bold ${Number(roi) >= 0 ? 'text-emerald-600' : 'text-red-600'}`}>{roi}%</p>
+          <p className={`text-base font-black tracking-tight ${Number(roi) >= 0 ? 'text-emerald-600' : 'text-red-500'}`}>{roi}%</p>
         </div>
-        <div className="bg-white rounded-2xl border border-slate-100 p-4">
-          <div className="flex items-center gap-2 mb-2">
-            <AlertTriangle className="w-4 h-4 text-amber-500" />
+        <div className="bg-white rounded-2xl border border-slate-200 p-4">
+          <div className="flex items-center gap-1.5 mb-2">
+            <div className="w-6 h-6 rounded-lg bg-amber-50 flex items-center justify-center">
+              <AlertTriangle className="w-3.5 h-3.5 text-amber-500" />
+            </div>
             <span className="text-xs text-slate-500">Risk Level</span>
           </div>
           <div className="mt-1"><RiskBadge level={idea.risk_level} /></div>
@@ -178,10 +189,12 @@ export function IdeaDetail() {
           </div>
 
           {idea.ai_feedback && (
-            <div className="bg-gradient-to-br from-violet-50 to-primary-50 rounded-2xl border border-violet-100 p-6">
+            <div className="bg-gradient-to-br from-primary-50 via-violet-50 to-purple-50 rounded-2xl border border-primary-100 p-6">
               <div className="flex items-center gap-2 mb-3">
-                <Sparkles className="w-5 h-5 text-violet-600" />
-                <h3 className="font-semibold text-slate-900">AI Analysis</h3>
+                <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-primary-500 to-violet-600 flex items-center justify-center">
+                  <Sparkles className="w-3.5 h-3.5 text-white" />
+                </div>
+                <h3 className="font-bold text-slate-900">AI Analysis</h3>
               </div>
               <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-line">{idea.ai_feedback}</p>
             </div>
@@ -305,14 +318,14 @@ export function IdeaDetail() {
             <div className="flex gap-3">
               <button
                 onClick={() => setShowDeleteConfirm(false)}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-slate-700 bg-slate-100 rounded-xl hover:bg-slate-200 border-0 cursor-pointer"
+                className="flex-1 btn-secondary justify-center"
               >
                 Cancel
               </button>
               <button
                 onClick={handleDelete}
                 disabled={deleteLoading}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-red-600 rounded-xl hover:bg-red-700 disabled:opacity-50 border-0 cursor-pointer"
+                className="flex-1 btn-danger justify-center disabled:opacity-50"
               >
                 {deleteLoading ? 'Deleting...' : 'Delete'}
               </button>
