@@ -1,0 +1,588 @@
+\documentclass[12pt,letterpaper]{article}
+
+% Packages for formatting and layout
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontawesome}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+% Define professional colors
+\definecolor{primaryblue}{RGB}{20,50,120}
+\definecolor{secondaryblue}{RGB}{50,100,180}
+\definecolor{accentgray}{RGB}{80,80,80}
+\definecolor{lightgray}{RGB}{240,240,240}
+
+% Configure hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primaryblue,
+    urlcolor=primaryblue,
+    citecolor=primaryblue
+}
+
+% Custom page style with header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % Clear all headers and footers
+\fancyhead[R]{\textbf{\color{primaryblue}InvestSmart}} % Right header
+\fancyfoot[C]{\thepage} % Center footer with page number
+\renewcommand{\headrulewidth}{0.4pt} % Add a line under header
+\renewcommand{\footrulewidth}{0pt} % No line above footer
+
+% Custom section formatting
+\titleformat{\section}
+  {\Large\bfseries\color{primaryblue}}
+  {\thesection.}{0.5em}{}[\vspace{0.3em}\color{primaryblue}\titlerule]
+
+\titleformat{\subsection}
+  {\large\bfseries\color{secondaryblue}}
+  {\thesubsection}{0.5em}{}[\vspace{0.2em}\color{secondaryblue}\titlerule[0.5pt]]
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{accentgray}}
+  {\thesubsubsection}{0.5em}{}
+
+% Custom spacing
+\titlespacing*{\section}{0pt}{20pt}{10pt}
+\titlespacing*{\subsection}{0pt}{15pt}{8pt}
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
+
+% List formatting
+\setlist[itemize]{leftmargin=1.2em, itemsep=3pt, topsep=5pt}
+\setlist[enumerate]{leftmargin=1.2em, itemsep=3pt, topsep=5pt}
+
+% Line spacing
+\onehalfspacing
+
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries\color{primaryblue} InvestSmart}
+    
+    \vspace{0.3cm}
+    {\LARGE\color{secondaryblue} An AI-Powered Entrepreneurial Simulation \& Decision Support Platform}
+    
+    \vspace{2cm}
+    {\Large\bfseries Software Project Management Proposal}
+    
+    \vspace{2cm}
+    {\large\bfseries Submitted by:}
+    
+    \vspace{0.5cm}
+    {\large Mahir Faisal (BSSE-1316)}
+    
+    \vspace{0.3cm}
+    {\large Khandakar Mehedi Hasan (BSSE-1326)}
+    
+    \vspace{0.3cm}
+    {\large Ibne Bin Rafid (BSSE-1330)}
+    
+    \vspace{.5cm}
+    {\large\bfseries Submitted to:}
+    
+    \vspace{0.2cm}
+    {\large Saed Siddik}
+    
+    \vspace{0.2cm}
+    {\large Institute of Information Technology}
+    
+    \vspace{0.2cm}
+    {\large University of Dhaka}
+    
+    \vspace{.5cm}
+    {\large\bfseries\today}
+    
+\end{titlepage}
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% Main Content
+\section{Project Title}
+\textbf{InvestSmart}—An AI-Powered Entrepreneurial Simulation \& Decision Support Platform
+
+\section{Introduction \& Problem Statement}
+
+In Bangladesh, a large segment of youth and students faces unemployment or underemployment, despite possessing strong aspirations to become self-reliant. Many express interest in starting their own businesses, yet the absence of practical business knowledge, market insights, and hands-on experience prevents them from taking informed steps. Identifying viable business opportunities, understanding market demand, and evaluating risks remain significant challenges for beginners.
+
+At the same time, business students often struggle to practically apply the theoretical knowledge gained from their academic curriculum. There is a clear need for an accessible, simulation-based learning platform that can bridge the gap between classroom concepts and real-world entrepreneurial decision-making.
+
+\textbf{InvestSmart} is an AI-powered web platform designed to address these challenges through a unified solution. The platform serves \textbf{dual purposes}:
+
+\begin{itemize}
+    \item \textbf{Educational support for business students}, enabling them to apply theoretical concepts in realistic, interactive business simulations.
+    \item \textbf{Decision-making assistance for aspiring entrepreneurs and unemployed youth}, helping them evaluate business ideas, understand investment requirements, and explore market feasibility with confidence.
+\end{itemize}
+
+These problems show why we need a platform that is easy to reach and interactive. It should use AI to help out. That way, it can give practical skills to those starting businesses and to business students. It would guide their decisions and offer simulations from real life.
+
+\section{Motivation \& Rationale}
+
+Bangladesh's youth face a growing challenge: rising unemployment, limited access to practical business knowledge, and a lack of guidance to start sustainable ventures. Although many are eager to become self-reliant, they struggle to identify viable business opportunities, assess market demand, or understand investment risks. At the same time, business students remain unable to translate theoretical lessons into real-world decision-making, creating a critical gap between education and entrepreneurship.
+
+\textbf{InvestSmart} is designed to address these core problems. By combining AI-driven insights with interactive business simulations, the platform makes complex entrepreneurial decisions understandable and accessible. It empowers students and aspiring entrepreneurs to analyze markets, test business ideas, forecast profits, and evaluate risks—before investing any resources.
+
+The initiative directly advances key Sustainable Development Goals:
+
+\begin{itemize}
+    \item \textbf{SDG 4 – Quality Education:} offering hands-on, applied learning tools.
+    \item \textbf{SDG 8 – Decent Work \& Economic Growth:} enabling youth to pursue informed self-employment and entrepreneurship.
+    \item \textbf{SDG 9 – Industry, Innovation \& Infrastructure:} building a digital innovation that strengthens the entrepreneurial ecosystem.
+    \item \textbf{SDG 17: Partnerships for the Goals: }
+    Establishes strategic partnerships with business faculties and departments across universities
+ 
+\end{itemize}
+
+InvestSmart's motivation is simple: \textbf{equip Bangladesh's youth with the practical skills, insights, and confidence needed to make informed economic decisions and create sustainable livelihoods.}
+
+\section{Background Study / Related Works}
+
+Global research consistently shows that \textbf{simulation-based learning and AI-driven guidance} are transforming entrepreneurship education. Business Simulation Games (BSGs) have proven highly effective in helping learners practice real-world decision-making—such as pricing, investment planning, market analysis, and risk evaluation—within a safe, risk-free environment. Studies highlight that students who use simulations show \textbf{higher engagement, stronger confidence, and better entrepreneurial intentions} compared to those taught through traditional theory-only methods.
+
+Recent developments in generative AI have further elevated this field. AI-powered platforms now provide \textbf{personalized coaching, dynamic market scenarios, and adaptive feedback}, enabling learners to convert ideas into actionable business strategies with remarkable clarity. These advancements demonstrate a global shift toward technology-enabled experiential learning—yet such solutions remain largely absent in Bangladesh.
+
+This gap presents a powerful opportunity: \textbf{InvestSmart} brings internationally validated methods—simulation, AI mentoring, and experiential learning—into a unified platform tailored for Bangladesh's youth and students.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{image.png}
+    \caption{Experiment result on simulation business study}
+    \label{fig:placeholder}
+\end{figure}
+\subsection{Key Resources}
+\begin{itemize}
+    \item Tan R.F. et al. — \textit{Experiential Learning with Business Simulations} (2023)
+    \item MDPI (2023) — \textit{Simulation Games in Sustainable Learning}
+    \item Zhu \& Luo (2025) — \textit{AI-Empowered Business Plan Systems}
+    \item Mollick et al. (2024) — \textit{AI Agents for Scalable Educational Simulations}
+\end{itemize}
+
+\subsection{Onspot study}
+\begin{itemize}
+   This project is also informed by insights collected directly from real Bangladeshi entrepreneurs and small business investors. Through interviews and observation, we noted their challenges in planning, pricing, marketing, and managing early-stage risks. Each step of their business journey successes, failures, and decision patterns was documented as ground-truth data. These practical experiences form the foundation for designing a realistic and locally relevant business simulation platform.
+\end{itemize}
+
+\section{Proposed Solution \& Technical Methodology}
+
+\subsection{Proposed Solution}
+
+\textbf{InvestSmart} is an AI-powered web platform designed to help Bangladeshi youth, students, and aspiring entrepreneurs learn, test, and validate business ideas through interactive simulations. The platform combines \textbf{real-time market insights, AI-driven guidance, and hands-on business practice} to bridge the gap between academic theory and real-world entrepreneurship.
+
+The solution provides:
+
+\begin{itemize}
+    \item \textbf{Business Idea Simulator:} Users test business concepts in a virtual environment with realistic market conditions.
+    
+    \item \textbf{AI Business Mentor:} A generative AI assistant that provides step-by-step guidance on planning, budgeting, pricing, marketing, and risk assessment.
+    
+    \item \textbf{Market Feasibility Analyzer:} Automated evaluation of demand, competition, investment needs, and profit potential.
+    
+    \item \textbf{Learning Hub:} Short modules, case studies, and tutorials to strengthen practical business skills.
+    
+    \item \textbf{Progress \& Performance Tracking} – Analytics dashboards showing improvement across decisions and simulations.
+\end{itemize}
+
+
+
+InvestSmart empowers beginners to make informed decisions \textit{before} investing money, directly supporting youth empowerment, self-employment, and SDG-aligned development.
+
+
+
+
+\subsection{Technical Methodology}
+
+\subsubsection{ AI Model / Approach}
+
+\paragraph{a. Retrieval-Augmented Generation (RAG):}
+\begin{itemize}
+    \item Used for fetching relevant business cases, examples, and learning content.
+    \item Combines vector similarity search with LLM generation to produce personalized recommendations and explanations.
+    \item \textbf{Example Use-Cases:}
+          \begin{itemize}
+              \item AI Business Mentor retrieves topic-specific content from structured knowledge base.
+              \item Business Idea Simulator fetches similar historical business cases to predict outcomes.
+          \end{itemize}
+\end{itemize}
+
+\paragraph{b. Large Language Models (LLM):}
+\begin{itemize}
+    \item Models like GPT-4, Mistral, or LLaMA used for:
+          \begin{itemize}
+              \item Generating step-by-step guidance and actionable advice.
+              \item Explaining complex business concepts in simple terms.
+              \item Suggesting mini-case exercises or implementation examples.
+          \end{itemize}
+    \item Fine-tuned or prompt-engineered for domain-specific business knowledge.
+\end{itemize}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{ADC-2.png}
+    \caption{AI based solution approach}
+    \label{fig:ai-approach}
+\end{figure}
+
+\subsubsection{ System Design \& Technical Workflow}
+
+\paragraph{Overall Flow:}
+\begin{enumerate}
+    \item \textbf{User Input Layer:} \\
+          Collects business idea, budget, location, team experience, or learning preferences.
+    
+    \item \textbf{Data Preprocessing \& Storage:} \\
+          Structured data: PostgreSQL (business cases, KPIs). \\
+          Unstructured data: MongoDB or vector database (learning modules, case studies).
+    
+    \item \textbf{AI Processing Layer:} \\
+          RAG pipeline: Retrieve relevant content or past business cases. \\
+          LLM: Generate personalized insights, learning guidance, or scenario predictions. \\
+          Predictive ML models: Compute KPIs, risk scores, and feasibility metrics.
+    
+    \item \textbf{Simulation / Scenario Engine:} \\
+          Evaluate multiple "what-if" scenarios for business ideas. \\
+          Generate outputs like projected revenue, risk assessment, and success probability.
+    
+    \item \textbf{Learning \& Guidance Layer:} \\
+          AI Mentor provides step-by-step explanations, practical examples, and gamified exercises.
+    
+    \item \textbf{Analytics \& Dashboard:} \\
+          Track user progress, learning outcomes, and simulation performance. \\
+          Visualize improvement and recommendations via charts and dashboards.
+\end{enumerate}
+
+\subsubsection{ Datasets}
+
+\paragraph{a. Internal / Proprietary Datasets:}
+\begin{itemize}
+    \item Structured business case experiments, KPI results, success/failure scenarios.
+    \item User interaction and learning progress data (for analytics and model feedback).
+\end{itemize}
+
+\paragraph{b. External Datasets:}
+\begin{itemize}
+    \item Market trends, competitor data, and economic indicators via web scraping (BeautifulSoup, Scrapy) or APIs (Google Trends, World Bank, Kaggle datasets).
+    \item Business tutorials, books, and online resources for RAG-based learning content.
+\end{itemize}
+
+\paragraph{c. Data Processing:}
+\begin{itemize}
+    \item Text data $\rightarrow$ cleaned, tokenized, embedded into vector space for RAG.
+    \item Numeric/market data $\rightarrow$ normalized and structured for predictive modeling.
+\end{itemize}
+
+\subsubsection{ Tools \& Frameworks}
+
+\begin{longtable}{|p{3cm}|p{10cm}|}
+\hline
+\textbf{Layer} & \textbf{Tools / Frameworks} \\
+\hline
+AI / RAG & LangChain \\
+\hline
+LLM & Free models \\
+\hline
+ML/Analytics & Scikit-learn, Pandas, NumPy, Plotly, Matplotlib \\
+\hline
+Backend & Python, Django \\
+\hline
+Frontend & React.js \\
+\hline
+Data Collection & BeautifulSoup, Scrapy, APIs \\
+\hline
+Database & PostgreSQL, vector databases for embeddings \\
+\hline
+Deployment & Docker, Github, Vercel \\
+\hline
+\end{longtable}
+
+\section{Scope and Pilot Implementation}
+
+\subsection{Scope}
+
+InvestSmart focuses on helping Bangladeshi youth learn, test, and validate business ideas using AI-driven tools. The project scope includes:
+
+\begin{itemize}
+    \item \textbf{Business Idea Simulator:} Virtual testing of business ideas with cost, demand, risk, and competition factors.
+    \item \textbf{AI Business Mentor:} Step-by-step guidance on planning, budgeting, pricing, and marketing using RAG + LLMs.
+    \item \textbf{Market Feasibility Analyzer:} Automated scoring of demand, competition, investment needs, and profitability.
+    \item \textbf{Learning Hub:} Short modules and case studies that build practical business skills.
+    \item \textbf{Progress Dashboard:} Tracks user improvement and decision quality.
+    \item \textbf{Target Users:} Students, young entrepreneurs, and unemployed youth seeking self-employment.
+    \item \textbf{Technology Coverage:} RAG for retrieval, LLMs for guidance, ML models for risk and feasibility prediction.
+\end{itemize}
+
+\subsection{Pilot Implementation}
+
+The pilot will include a small set of core features to test the basic usefulness of InvestSmart.
+
+\paragraph{Pilot Features}
+
+\paragraph{Business Idea Input}
+Users add a business idea with basic cost and price info.
+
+\paragraph{Basic Simulation}
+Shows estimated profit and risk level.
+
+\paragraph{AI Mentor (Simple Tips)}
+Gives short suggestions on pricing, cost, and marketing.
+
+\paragraph{Feasibility Score}
+Provides a basic rating: High / Medium / Low.
+
+\paragraph{Small Learning Section}
+Only 2–3 quick lessons on pricing, customers, and risk.
+
+\paragraph{Simple Progress View}
+Shows number of simulations and completed lessons.
+
+\section{Budget \& Resource Plan (6 Months)}
+
+\subsection{Recurrent Expenditure (6 Months)}
+
+\begin{longtable}{|p{1cm}|p{3.5cm}|p{1cm}|p{2.5cm}|p{2.5cm}|p{3.5cm}|}
+\hline
+\textbf{Code} & \textbf{Description} & \textbf{Unit} & \textbf{Cost per Unit (BDT)} & \textbf{Estimated Cost (BDT)} & \textbf{Justification} \\
+\hline
+A1 & Full Stack Developers (4) & 4 & 70,000/month × 4 & 280000*6 & Core system + module development \\
+\hline
+A2 & ML Engineer (part-time) & 1 & 50,000/month × 6 & 3,00,000 & AI model \& feasibility \\
+\hline
+A3 & UI/UX Designer (part-time) & 1 & 25,000/month × 4 & 1,00,000 & Frontend + dashboard \\
+\hline
+A4 & Project Coordinator & 1 & 18,000/month × 6 & 1,08,000 & Documentation, reporting \\
+\hline
+A5 & SME Domain Advisor & 1 & 12,000/session × 4 & 48,000 & Business insights \\
+\hline
+A6 & Cloud Hosting (VPS) & 1 & 5,000/month × 6 & 30,000 & Hosting + storage \\
+\hline
+A7 & Workshops/Training & 2 & 25,000/event & 50,000 & Youth/student training \\
+\hline
+A8 & Publication + Conference & 1 & 35,000 & 35,000 & Journal + showcase \\
+\hline
+A9 & Intern/Student Assistant & 1 & 10,000/month × 4 & 40,000 & Testing + annotation \\
+\hline
+A10 & Field Survey/Data Validation & - & Lump 35,000 & 35,000 & Dataset validation \\
+\hline
+A11 & Team Refreshments/Meetings & - & 5,000/month × 6 & 30,000 & Team coordination \\
+\hline
+A12 & LLM API Usage & - & Lump Sum & 1,00,000 & AI inference + API cost \\
+\hline
+\multicolumn{5}{|r|}{\textbf{Total Recurrent Cost =}} & \textbf{24,56,000 BDT} \\
+\hline
+\end{longtable}
+
+\subsection{Capital Expenditure (One-Time)}
+
+\begin{longtable}{|p{1cm}|p{3.5cm}|p{1cm}|p{2.5cm}|p{2.5cm}|p{3.5cm}|}
+\hline
+\textbf{Code} & \textbf{Description} & \textbf{Unit} & \textbf{Cost per Unit (BDT)} & \textbf{Estimated Cost (BDT)} & \textbf{Justification} \\
+\hline
+B1 & Developer Laptop & 5 & 70,000 & 70,000×5 & Development + ML \\
+\hline
+B2 & Testing Smartphone/Tablet & 1 & 25,000 & 25,000 & UI testing \\
+\hline
+B3 & Cloud Storage \& Backup & 1 & 35,000 & 35,000 & Backup repository \\
+\hline
+B4 & GPU/Compute (Colab Pro+/Kaggle) & 1 & 35,000 & 35,000 & Model training \\
+\hline
+B5 & Learning Material Toolkit & 1 & 25,000 & 25,000 & Training content \\
+\hline
+B6 & Office Accessories (Printer/UPS) & 1 & 30,000 & 30,000 & Documentation support \\
+\hline
+\multicolumn{5}{|r|}{\textbf{Total Capital Cost =}} & \textbf{2,30,000 BDT} \\
+\hline
+\end{longtable}
+
+\subsection{Operational / Contingency}
+
+\begin{longtable}{|p{1cm}|p{5cm}|p{3cm}|p{4cm}|}
+\hline
+\textbf{Code} & \textbf{Description} & \textbf{Estimated Cost (BDT)} & \textbf{Justification} \\
+\hline
+C1 & Contingency (approx. 25\% of total) & 2,50,000 & Unforeseen expenses \\
+\hline
+\end{longtable}
+
+\subsection{Grand Total Budget (6 Months)}
+
+\begin{longtable}{|p{4cm}|p{3cm}|}
+\hline
+\textbf{Category} & \textbf{Amount (BDT)} \\
+\hline
+Total Recurrent & 2736000 \\
+\hline
+Total Capital & 2,30,000 \\
+\hline
+Total Contingency & 2,50,000 \\
+\hline
+{\Large\textbf{Grand Total (Final)}} & {\Large\textbf{32,16,000 BDT}} \\
+\hline
+\end{longtable}
+
+\section{Impact on Society}
+InvestSmart will create high-value social and economic impact in Bangladesh through:
+
+\subsection{Youth Empowerment \& Employment}
+\begin{itemize}
+    \item Allows young people to try out business ideas with minimal risk.
+    \item Reduces fear and financial risk while exploring entrepreneurship.
+\end{itemize}
+
+\subsection{Improved Business Education}
+\begin{itemize}
+    \item Students gain an applied understanding of finance, marketing, and operations.
+    \item Enhances employability and entrepreneurial skill development.
+\end{itemize}
+
+\subsection{Improved survival rates of startups}
+\begin{itemize}
+    \item AI-driven feasibility evaluation reduces unplanned losses.
+    \item Data-driven decisions increase the sustainability of SMEs.
+\end{itemize}
+
+\subsection{Inclusive Access}
+\begin{itemize}
+    \item A low-cost and scalable solution that universities, vocational institutes, unemployed youth, and community entrepreneurs can use.
+\end{itemize}
+
+\section{Alignment with Sustainable Development Goals (SDGs)}
+InvestSmart directly contributes to:
+
+\subsection{SDG 4: Quality Education}
+\begin{itemize}
+    \item Transforms abstract academic learning into tangible simulation-based experiences.
+    \item Promotes active learning with measurable performance outcomes
+\end{itemize}
+
+\subsection{SDG 8: Decent Work \& Economic Growth}
+\begin{itemize}
+    \item Facilitates entrepreneurship and small-business formation
+    \item Encourages youth-led economic activities, thereby increasing productivity.
+\end{itemize}
+
+\subsection{SDG 9: Industry, Innovation \& Infrastructure}
+\begin{itemize}
+    \item Leverages AI to support industrial innovation, SME growth, and digital transformation
+\end{itemize}
+
+\subsection{SDG 17: Partnerships for the Goals}
+\begin{itemize}
+    \item Establishes strategic partnerships with business faculties and departments across universities
+    \item Enables collaboration between academia and technology to bridge theoretical-practical gaps
+    \item Creates institutional partnerships for student access to applied learning tools
+    \item Facilitates knowledge sharing between business education institutions and AI-driven platforms
+    \item Supports multi-stakeholder engagement for sustainable entrepreneurship development
+\end{itemize}
+
+\section{Revenue \& Sustainability Plan}
+To ensure long-term financial viability and continuous platform improvement, the simulation system will operate with a diversified monetization strategy.
+
+\subsection{Individual Users – Freemium + Subscription Hybrid Model}
+The business model for independent learners will follow a structure similar to modern SaaS tools:
+
+\subsubsection{Freemium Tier (Free Access)}
+Users can access:
+\begin{itemize}
+    \item Limited simulations (e.g., 5 simulation runs per month)
+\end{itemize}
+
+\subsubsection{Premium Subscription Tier}
+After exceeding free usage, users will be encouraged to subscribe.
+
+Subscription options:
+\begin{itemize}
+    \item Monthly subscription
+    \item 6 months subscription
+    \item Annual subscription (discounted)
+\end{itemize}
+
+Premium users receive:
+\begin{itemize}
+    \item Unlimited simulation access
+    \item Expanded business scenarios and market variations
+    \item Personalized AI-driven improvement feedback
+    \item Priority support
+\end{itemize}
+
+\subsection{Institutional Licensing Model}
+For academic institutions and corporate training teams, a licensing-based subscription will be used.
+
+\subsubsection{Pricing Model:}
+Institutions will subscribe using any of the following:
+\begin{itemize}
+    \item Semester-Based License
+    \item Annual License
+    \item Enterprise packages for large cohorts
+\end{itemize}
+
+Pricing will be based on:
+\begin{itemize}
+    \item Number of students
+    \item Feature selection (basic / advanced)
+    \item Number of course facilitators
+\end{itemize}
+
+\section{Expected Outcomes \& Deliverables}
+
+\subsection{Deliverables for Pilot (Course Submission):}
+\begin{itemize}
+    \item AI Feasibility Study Module (prototype working)
+    \item Business Basic Simulation Scenario
+    \item Market Insight Dashboard: for 2-3 sectors
+    \item Web-based working interface (demo)
+    \item Documentation + short demo presentation
+\end{itemize}
+
+\subsection{Long-term Outcomes:}
+\begin{itemize}
+    \item Fully featured localized simulation lab for entrepreneurship
+    \item Adoption by academic institutions
+    \item Increased youthful attempts in startups with reduced risk
+    \item Enhanced financial literacy in Bangladesh
+\end{itemize}
+
+\section{Risks \& Mitigation Strategies}
+
+\begin{longtable}{|p{3cm}|p{4cm}|p{6cm}|}
+\hline
+\textbf{Risk} & \textbf{Description} & \textbf{Mitigation} \\
+\hline
+Limited Local Data & Lack of structured datasets & Use proxies, public data, and curated SME case studies \\
+\hline
+Model Accuracy Concerns & Uncertainty in forecasts & Conservative outputs, confidence ranges, and explainability \\
+\hline
+User Adoption Challenges & Users may distrust AI & Clear guidance, improved UI/UX, educational onboarding \\
+\hline
+Scalability Issues & Increases with user load & Modular architecture, containerization, cloud scaling \\
+\hline
+\end{longtable}
+
+\section{Assessment Mapping}
+This proposal meets the evaluation expectations by:
+\begin{itemize}
+    \item Clearly identifying a real, practical problem in Bangladesh
+    \item Proposing a novel AI-powered solution with a realistic pilot scope
+    \item Providing a technically feasible architecture
+    \item Showing strong alignment with SDGs
+    \item Demonstrating measurable academic and economic impact
+\end{itemize}
+
+\section{Conclusion}
+InvestSmart is more than a theoretical solution; it bridges the gap between ambition and actionable entrepreneurship. By combining simulation, AI-driven analysis, and practical learning, it empowers youth and students to enter the business world with confidence, clarity, and capability. The pilot implementation will demonstrate core functionalities and lay the foundation for a full platform that can drive innovation, economic growth, and sustainable development within Bangladesh.
+
+\end{document}

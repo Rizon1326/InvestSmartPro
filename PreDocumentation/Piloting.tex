@@ -1,0 +1,284 @@
+\documentclass[12pt,letterpaper]{article}
+
+% Packages for formatting and layout
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontawesome}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+% Define professional colors
+\definecolor{primaryblue}{RGB}{20,50,120}
+\definecolor{secondaryblue}{RGB}{50,100,180}
+\definecolor{accentgray}{RGB}{80,80,80}
+\definecolor{lightgray}{RGB}{240,240,240}
+
+% Configure hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primaryblue,
+    urlcolor=primaryblue,
+    citecolor=primaryblue
+}
+
+% Custom page style with header
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % Clear all headers and footers
+\fancyhead[R]{\textbf{\color{primaryblue}InvestSmart}} % Right header
+\fancyfoot[C]{\thepage} % Center footer with page number
+\renewcommand{\headrulewidth}{0.4pt} % Add a line under header
+\renewcommand{\footrulewidth}{0pt} % No line above footer
+
+% Custom section formatting
+\titleformat{\section}
+  {\Large\bfseries\color{primaryblue}}
+  {\thesection.}{0.5em}{}[\vspace{0.3em}\color{primaryblue}\titlerule]
+
+\titleformat{\subsection}
+  {\large\bfseries\color{secondaryblue}}
+  {\thesubsection}{0.5em}{}[\vspace{0.2em}\color{secondaryblue}\titlerule[0.5pt]]
+
+\titleformat{\subsubsection}
+  {\normalsize\bfseries\color{accentgray}}
+  {\thesubsubsection}{0.5em}{}
+
+% Custom spacing
+\titlespacing*{\section}{0pt}{20pt}{10pt}
+\titlespacing*{\subsection}{0pt}{15pt}{8pt}
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
+
+% List formatting
+\setlist[itemize]{leftmargin=1.2em, itemsep=3pt, topsep=5pt}
+\setlist[enumerate]{leftmargin=1.2em, itemsep=3pt, topsep=5pt}
+
+% Line spacing
+\onehalfspacing
+
+\begin{document}
+
+% Title Page
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries\color{primaryblue} InvestSmart}
+    
+    \vspace{0.3cm}
+    {\LARGE\color{secondaryblue} Piloting Document}
+    
+    \vspace{1cm}
+    {\Large\color{accentgray} Proposed Solution, Technical Methodology \& Pilot Implementation}
+    
+    \vspace{2cm}
+    {\large\bfseries Submitted by:}
+    
+    \vspace{0.5cm}
+    {\large Mahir Faisal (BSSE-1316)}
+    
+    \vspace{0.3cm}
+    {\large Khandakar Mehedi Hasan (BSSE-1326)}
+    
+    \vspace{0.3cm}
+    {\large Ibne Bin Rafid (BSSE-1330)}
+    
+    \vspace{.5cm}
+    {\large\bfseries Submitted to:}
+    
+    \vspace{0.2cm}
+    {\large Saed Siddik}
+    
+    \vspace{0.2cm}
+    {\large Institute of Information Technology}
+    
+    \vspace{0.2cm}
+    {\large University of Dhaka}
+    
+    \vspace{.5cm}
+    {\large\bfseries\today}
+    
+\end{titlepage}
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% Main Content
+\section{Proposed Solution \& Technical Methodology}
+
+\subsection{Proposed Solution}
+
+\textbf{InvestSmart} is an AI-powered web platform designed to help Bangladeshi youth, students, and aspiring entrepreneurs learn, test, and validate business ideas through interactive simulations. The platform combines \textbf{real-time market insights, AI-driven guidance, and hands-on business practice} to bridge the gap between academic theory and real-world entrepreneurship.
+
+The solution provides:
+
+\begin{itemize}
+    \item \textbf{Business Idea Simulator:} Users test business concepts in a virtual environment with realistic market conditions.
+    
+    \item \textbf{AI Business Mentor:} A generative AI assistant that provides step-by-step guidance on planning, budgeting, pricing, marketing, and risk assessment.
+    
+    \item \textbf{Market Feasibility Analyzer:} Automated evaluation of demand, competition, investment needs, and profit potential.
+    
+    \item \textbf{Learning Hub:} Short modules, case studies, and tutorials to strengthen practical business skills.
+    
+    \item \textbf{Progress \& Performance Tracking} – Analytics dashboards showing improvement across decisions and simulations.
+\end{itemize}
+
+InvestSmart empowers beginners to make informed decisions \textit{before} investing money, directly supporting youth empowerment, self-employment, and SDG-aligned development.
+
+\subsection{Technical Methodology}
+
+\subsubsection{ AI Model / Approach}
+
+\paragraph{a. Retrieval-Augmented Generation (RAG):}
+\begin{itemize}
+    \item Used for fetching relevant business cases, examples, and learning content.
+    \item Combines vector similarity search with LLM generation to produce personalized recommendations and explanations.
+    \item \textbf{Example Use-Cases:}
+          \begin{itemize}
+              \item AI Business Mentor retrieves topic-specific content from structured knowledge base.
+              \item Business Idea Simulator fetches similar historical business cases to predict outcomes.
+          \end{itemize}
+\end{itemize}
+
+\paragraph{b. Large Language Models (LLM):}
+\begin{itemize}
+    \item Models like GPT-4, Mistral, or LLaMA used for:
+          \begin{itemize}
+              \item Generating step-by-step guidance and actionable advice.
+              \item Explaining complex business concepts in simple terms.
+              \item Suggesting mini-case exercises or implementation examples.
+          \end{itemize}
+    \item Fine-tuned or prompt-engineered for domain-specific business knowledge.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{ADC-2.png}
+    \caption{AI based solution approach}
+    \label{fig:ai-approach}
+\end{figure}
+
+\subsubsection{ System Design \& Technical Workflow}
+
+\paragraph{Overall Flow:}
+\begin{enumerate}
+    \item \textbf{User Input Layer:} \\
+          Collects business idea, budget, location, team experience, or learning preferences.
+    
+    \item \textbf{Data Preprocessing \& Storage:} \\
+          Structured data: PostgreSQL (business cases, KPIs). \\
+          Unstructured data: MongoDB or vector database (learning modules, case studies).
+    
+    \item \textbf{AI Processing Layer:} \\
+          RAG pipeline: Retrieve relevant content or past business cases. \\
+          LLM: Generate personalized insights, learning guidance, or scenario predictions. \\
+          Predictive ML models: Compute KPIs, risk scores, and feasibility metrics.
+    
+    \item \textbf{Simulation / Scenario Engine:} \\
+          Evaluate multiple "what-if" scenarios for business ideas. \\
+          Generate outputs like projected revenue, risk assessment, and success probability.
+    
+    \item \textbf{Learning \& Guidance Layer:} \\
+          AI Mentor provides step-by-step explanations, practical examples, and gamified exercises.
+    
+    \item \textbf{Analytics \& Dashboard:} \\
+          Track user progress, learning outcomes, and simulation performance. \\
+          Visualize improvement and recommendations via charts and dashboards.
+\end{enumerate}
+
+\subsubsection{ Datasets}
+
+\paragraph{a. Internal / Proprietary Datasets:}
+\begin{itemize}
+    \item Structured business case experiments, KPI results, success/failure scenarios.
+    \item User interaction and learning progress data (for analytics and model feedback).
+\end{itemize}
+
+\paragraph{b. External Datasets:}
+\begin{itemize}
+    \item Market trends, competitor data, and economic indicators via web scraping (BeautifulSoup, Scrapy) or APIs (Google Trends, World Bank, Kaggle datasets).
+    \item Business tutorials, books, and online resources for RAG-based learning content.
+\end{itemize}
+
+\paragraph{c. Data Processing:}
+\begin{itemize}
+    \item Text data $\rightarrow$ cleaned, tokenized, embedded into vector space for RAG.
+    \item Numeric/market data $\rightarrow$ normalized and structured for predictive modeling.
+\end{itemize}
+
+\subsubsection{ Tools \& Frameworks}
+
+\begin{longtable}{|p{3cm}|p{10cm}|}
+\hline
+\textbf{Layer} & \textbf{Tools / Frameworks} \\
+\hline
+AI / RAG & LangChain \\
+\hline
+LLM & Free models \\
+\hline
+ML/Analytics & Scikit-learn, Pandas, NumPy, Plotly, Matplotlib \\
+\hline
+Backend & Python, Django \\
+\hline
+Frontend & React.js \\
+\hline
+Data Collection & BeautifulSoup, Scrapy, APIs \\
+\hline
+Database & PostgreSQL, vector databases for embeddings \\
+\hline
+Deployment & Docker, Github, Vercel \\
+\hline
+\end{longtable}
+
+\section{Scope and Pilot Implementation}
+
+\subsection{Scope}
+
+InvestSmart focuses on helping Bangladeshi youth learn, test, and validate business ideas using AI-driven tools. The project scope includes:
+
+\begin{itemize}
+    \item \textbf{Business Idea Simulator:} Virtual testing of business ideas with cost, demand, risk, and competition factors.
+    \item \textbf{AI Business Mentor:} Step-by-step guidance on planning, budgeting, pricing, and marketing using RAG + LLMs.
+    \item \textbf{Market Feasibility Analyzer:} Automated scoring of demand, competition, investment needs, and profitability.
+    \item \textbf{Learning Hub:} Short modules and case studies that build practical business skills.
+    \item \textbf{Progress Dashboard:} Tracks user improvement and decision quality.
+    \item \textbf{Target Users:} Students, young entrepreneurs, and unemployed youth seeking self-employment.
+    \item \textbf{Technology Coverage:} RAG for retrieval, LLMs for guidance, ML models for risk and feasibility prediction.
+\end{itemize}
+
+\subsection{Pilot Implementation}
+
+The pilot will include a small set of core features to test the basic usefulness of InvestSmart.
+
+\paragraph{Pilot Features}
+
+\paragraph{Business Idea Input}
+Users add a business idea with basic cost and price info.
+
+\paragraph{Basic Simulation}
+Shows estimated profit and risk level.
+
+\paragraph{AI Mentor (Simple Tips)}
+Gives short suggestions on pricing, cost, and marketing.
+
+\paragraph{Feasibility Score}
+Provides a basic rating: High / Medium / Low.
+
+\paragraph{Small Learning Section}
+Only 2–3 quick lessons on pricing, customers, and risk.
+
+\paragraph{Simple Progress View}
+Shows number of simulations and completed lessons.
+
+\end{document}

@@ -1,0 +1,18 @@
+from django.contrib import admin
+from .models import Conversation, Message
+
+
+@admin.register(Conversation)
+class ConversationAdmin(admin.ModelAdmin):
+    list_display = ['session_id', 'user', 'title', 'created_at', 'updated_at']
+    search_fields = ['session_id', 'user__username', 'title']
+
+
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ['conversation', 'role', 'content_preview', 'created_at']
+    list_filter = ['role', 'created_at']
+
+    def content_preview(self, obj):
+        return obj.content[:50] + "..." if len(obj.content) > 50 else obj.content
+    content_preview.short_description = 'Content'
