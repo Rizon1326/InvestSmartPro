@@ -20,6 +20,7 @@ import { ScoreGauge } from '../components/ui/ScoreGauge';
 import { PageSpinner } from '../components/ui/Spinner';
 import { ErrorState } from '../components/ui/ErrorState';
 import { formatBDT, formatDate } from '../lib/utils';
+import ReactMarkdown from 'react-markdown';
 import toast from 'react-hot-toast';
 
 const CHART_COLORS = ['#6366f1', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6'];
@@ -83,6 +84,29 @@ export function IdeaDetail() {
     { name: 'Revenue', value: Number(idea.monthly_revenue) || 1 },
     { name: 'Expenses', value: Number(idea.monthly_expenses) || 1 },
   ];
+
+  // Parse AI feedback text into titled sections. Supports bold-style headings (e.g. **Strengths**) and markdown headings (#, ##)
+  const parseAIFeedback = (text) => {
+    if (!text) return [];
+    const lines = text.split(/\r?\n/);
+    const sections = [];
+    let current = { title: 'Summary', content: [] };
+    const headingRegex = /^\s*(?:\*{2,}|#{1,6})\s*([^:*]+?)\s*(?:\*{2,})?\s*:?\s*$/;
+
+    for (let line of lines) {
+      const m = line.match(headingRegex);
+      if (m) {
+        if (current.content.length) sections.push(current);
+        current = { title: m[1].trim(), content: [] };
+      } else {
+        current.content.push(line);
+      }
+    }
+
+    if (current.content.length) sections.push(current);
+
+    return sections.map((s) => ({ title: s.title, markdown: s.content.join('\n').trim() }));
+  };
 
   return (
     <div className="animate-fade-in space-y-6">
@@ -196,7 +220,17 @@ export function IdeaDetail() {
                 </div>
                 <h3 className="font-bold text-slate-900">AI Analysis</h3>
               </div>
-              <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-line">{idea.ai_feedback}</p>
+
+              <div className="space-y-4">
+                {parseAIFeedback(idea.ai_feedback).map((sec, idx) => (
+                  <div key={idx} className="bg-white rounded-xl p-4 border border-slate-100">
+                    <h4 className="text-sm font-semibold text-slate-900 mb-2">{sec.title}</h4>
+                    <div className="text-sm text-slate-700 leading-relaxed">
+                      <ReactMarkdown>{sec.markdown || '—'}</ReactMarkdown>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>
