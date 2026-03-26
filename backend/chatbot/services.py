@@ -3,15 +3,24 @@
 from google import genai
 from django.conf import settings
 
-# Configure Gemini Client with the new google-genai package
-client = genai.Client(api_key=settings.GEMINI_API_KEY)
+# Lazy-initialized global client
+_client = None
+
+def _get_client():
+    global _client
+    if _client is None:
+        api_key = settings.GEMINI_API_KEY
+        if not api_key:
+            raise ValueError("GEMINI_API_KEY is not set. Please add it to your environment variables.")
+        _client = genai.Client(api_key=api_key)
+    return _client
 
 
 class GeminiChatService:
     """Service for interacting with Gemini AI"""
     
     def __init__(self):
-        self.model_name = 'gemini-2.0-flash'
+        self.model_name = 'gemini-2.5-flash'
         self.system_prompt = """
 You are InvestSmart Assistant, a friendly and supportive AI chatbot designed to help aspiring entrepreneurs in Bangladesh.
 
@@ -47,7 +56,7 @@ Remember: You're here to help users succeed in their entrepreneurial journey!
             
             context += f"User: {user_message}\nAssistant:"
             
-            response = client.models.generate_content(
+            response = _get_client().models.generate_content(
                 model=self.model_name,
                 contents=context
             )
@@ -83,7 +92,7 @@ RISK_LEVEL: [low/medium/high]
 FEEDBACK: [your detailed feedback]
 """
             
-            response = client.models.generate_content(
+            response = _get_client().models.generate_content(
                 model=self.model_name,
                 contents=prompt
             )
@@ -153,7 +162,7 @@ DESCRIPTION: [brief description]
 ---
 """
             
-            response = client.models.generate_content(
+            response = _get_client().models.generate_content(
                 model=self.model_name,
                 contents=prompt
             )
